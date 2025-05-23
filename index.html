@@ -70,18 +70,20 @@
     <button type="submit">Search</button>
   </form>
   <script>
-    document.getElementById('dateForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var checkin = document.getElementById('checkin').value;
-      var checkout = document.getElementById('checkout').value;
-      if (!checkin || !checkout) {
-        alert('Please select both dates.');
-        return;
-      }
-      // Redirect with date parameters (adjust param names if needed)
-      var url = 'https://8cc0acc48f114fbe.sirvoy.me/?checkin=' + checkin + '&checkout=' + checkout;
-      window.location.href = url;
-    });
+  document.getElementById('dateForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var checkin = document.getElementById('checkin').value;
+    var checkout = document.getElementById('checkout').value;
+    if (!checkin || !checkout) {
+      alert('Please select both dates.');
+      return;
+    }
+    // Try with Sirvoy's likely parameters (adjust if needed)
+    var url = 'https://8cc0acc48f114fbe.sirvoy.me/?arrival=' + checkin + '&departure=' + checkout;
+    window.location.href = url;
+  });
+</script>
+
   </script>
 </body>
 </html>
