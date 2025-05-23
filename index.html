@@ -1,9 +1,87 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sirvoy Booking Widget</title>
-  </head>
-  <body>
-    <script async data-form-id="8cc0acc48f114fbe" src="https://secured.sirvoy.com/widget/sirvoy.js" data-lang="en"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Your Stay | Hoppin House</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f6fdf9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .booking-form {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(55, 195, 111, 0.08);
+      padding: 32px 28px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
+    }
+    .booking-form h2 {
+      color: #37c36f;
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+    .booking-form label {
+      display: block;
+      margin: 12px 0 6px;
+      color: #3a5a47;
+      font-weight: bold;
+    }
+    .booking-form input[type="date"] {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #d2f5e1;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 14px;
+    }
+    .booking-form button {
+      background: #37c36f;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 0;
+      width: 100%;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+    .booking-form button:hover {
+      background: #2ea65d;
+    }
+  </style>
+</head>
+<body>
+  <form class="booking-form" id="dateForm">
+    <h2>Book Your Stay</h2>
+    <label for="checkin">Check-in Date</label>
+    <input type="date" id="checkin" name="checkin" required>
+    <label for="checkout">Check-out Date</label>
+    <input type="date" id="checkout" name="checkout" required>
+    <button type="submit">Search</button>
+  </form>
+  <script>
+    document.getElementById('dateForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var checkin = document.getElementById('checkin').value;
+      var checkout = document.getElementById('checkout').value;
+      if (!checkin || !checkout) {
+        alert('Please select both dates.');
+        return;
+      }
+      // Redirect with date parameters (adjust param names if needed)
+      var url = 'https://8cc0acc48f114fbe.sirvoy.me/?checkin=' + checkin + '&checkout=' + checkout;
+      window.location.href = url;
+    });
+  </script>
+</body>
 </html>
